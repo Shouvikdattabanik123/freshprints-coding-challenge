@@ -1,0 +1,14 @@
+node_modules
+.vscode
+
+# Angular
+.angular
+dist
+tmp
+out-tsc
+
+# Visual Studio Code
+.vscode
+
+# Others
+.DS_Store

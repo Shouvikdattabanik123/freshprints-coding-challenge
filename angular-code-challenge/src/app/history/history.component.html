@@ -1,0 +1,73 @@
+<div class="bg-slate-50 h-[90%]">
+  <div class="max-w-3xl mx-auto pt-12 pb-4">
+    <div class="text-center text-base mb-4">Your Search History</div>
+    <div
+      *ngIf="searchResults"
+      class="text-base text-center text-gray-400 h-[40rem] overflow-y-auto bg-white border-2 border-gray-100 w-full"
+    >
+      <div
+        class="flex bg-gray-50 h-12 items-center text-left sticky top-0 border-b border-gray-150"
+      >
+        <div class="w-1/2 pl-6">Search Term</div>
+        <div class="w-1/2 pl-6">Search Results</div>
+      </div>
+      <div
+        *ngFor="let searchResult of searchResults"
+        class="bg-white items-center text-left"
+      >
+        <div
+          *ngIf="searchResult.login; else notFound"
+          class="flex h-64 pt-6 border-b border-gray-150"
+        >
+          <div class="w-1/2 pl-6 text-black">{{ searchResult.searchTerm }}</div>
+          <div class="w-1/2">
+            <div class="flex">
+              <div
+                class="text-base text-gray-400 h-56 bg-white flex px-6 w-full"
+              >
+                <div>
+                  <div>User Image</div>
+                  <img
+                    *ngIf="searchResult.avatar_url"
+                    class="mt-2 w-32 h-36 border border-black"
+                    [src]="searchResult.avatar_url"
+                  />
+                </div>
+              </div>
+              <div
+                class="text-base text-gray-400 h-56 bg-white flex px-6 w-full"
+              >
+                <div>
+                  <div>GitHub User Name</div>
+                  <div class="text-black">
+                    {{ searchResult?.name || searchResult?.login }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ng-template #notFound>
+          <div class="flex items-center h-12 py-12 border-b border-gray-150">
+            <div class="w-1/2 pl-6 text-black">
+              {{ searchResult.searchTerm }}
+            </div>
+            <div class="w-1/2 pl-6">Search result not found</div>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+    <div *ngIf="!searchResults">
+      <div
+        class="text-base text-center text-gray-400 h-[40rem] bg-white flex px-6 py-4 w-full items-center justify-center"
+      >
+        <div class="w-full">No Searches have been done yet</div>
+      </div>
+    </div>
+    <div class="flex justify-center">
+      <button mat-raised-button color="primary" class="mt-12 text-center" (click)="clearSearchHistory()">
+        Clear Search History
+      </button>
+    </div>
+  </div>
+</div>

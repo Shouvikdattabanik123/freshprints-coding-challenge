@@ -1,0 +1,80 @@
+<div class="bg-slate-50 h-[90%]">
+  <form (ngSubmit)="onSubmit()">
+    <div class="max-w-md mx-auto pt-12 pb-4">
+      <label for="search-github-user" class="block text-center text-base mb-4"
+        >Search Github User</label
+      >
+      <div
+        class="relative flex items-center w-full h-12 rounded-lg focus-within:shadow-lg bg-white overflow-hidden mb-6"
+      >
+        <div class="grid place-items-center h-full w-12 text-gray-300">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
+        </div>
+
+        <input
+          class="peer h-full w-full outline-none text-sm text-gray-700 pr-2"
+          type="text"
+          id="search-github-user"
+          name="username"
+          placeholder="Search Github User"
+          [(ngModel)]="username"
+        />
+      </div>
+      <div>
+        <button
+          mat-raised-button
+          color="primary"
+          class="w-full mb-12"
+          type="submit"
+        >
+          Search
+        </button>
+      </div>
+      <div *ngIf="user">
+        <div class="text-base font-bold text-gray-400 mb-4">Search Results</div>
+        <div class="flex">
+          <div
+            class="text-base text-gray-400 h-56 bg-white flex px-6 py-4 w-full"
+          >
+            <div>
+              <div>User Image</div>
+              <img
+                *ngIf="user.avatar_url"
+                class="mt-2 w-32 h-36 border border-black"
+                [src]="user.avatar_url"
+              />
+            </div>
+          </div>
+          <div
+            class="text-base text-gray-400 h-56 bg-white flex px-6 py-4 w-full"
+          >
+            <div>
+              <div>GitHub User Name</div>
+              <div class="text-black">{{ user?.name || user?.login }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="error">
+        <div
+          class="text-base text-center text-gray-400 h-56 bg-white flex px-6 py-4 w-full items-center justify-center"
+        >
+          <div class="w-full">Search result not found</div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

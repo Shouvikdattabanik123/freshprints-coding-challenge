@@ -1,0 +1,21 @@
+<div class="flex justify-end pr-24">
+  <nav mat-tab-nav-bar [tabPanel]="tabPanel">
+    <a
+      mat-tab-link
+      routerLink="/search"
+      routerLinkActive
+      #rla1="routerLinkActive"
+      [active]="rla1.isActive"
+      >Home</a
+    >
+    <a
+      mat-tab-link
+      routerLink="/history"
+      routerLinkActive
+      #rla2="routerLinkActive"
+      [active]="rla2.isActive"
+      >History</a
+    >
+  </nav>
+</div>
+<mat-tab-nav-panel #tabPanel><router-outlet></router-outlet></mat-tab-nav-panel>
