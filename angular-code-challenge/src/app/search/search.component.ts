@@ -50,7 +50,7 @@ export class SearchComponent {
           searchTerm: this.username,
           name: 'Search result not found',
         });
-        this.store.dispatch(UserActions.SEARCH_USER_SUCCESS({ data: false }));
+        this.store.dispatch(UserActions.SEARCH_USER_FAIL({ error: true }));
       },
     });
   }
